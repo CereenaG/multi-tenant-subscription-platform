@@ -1,4 +1,5 @@
 import Login from './Login.jsx'
+import SignUp from './SignUp.jsx';
 import { Link } from 'react-router-dom';
 import './Login.css'
 function Home(){
@@ -13,8 +14,8 @@ function Home(){
                 
                 <Link to="/login" className='border-[#839958] border-2 p-1 rounded-sm'>sign in</Link>
                 
-                <button className='bg-[#839958] uppercase
-    tracking-wider text-[#f7f4d5] p-1 rounded-sm'>login</button>
+                <Link to="/signup" className='bg-[#839958] uppercase
+    tracking-wider text-[#f7f4d5] p-1 rounded-sm'>sign up</Link>
             </nav>
         </header>
         </>
