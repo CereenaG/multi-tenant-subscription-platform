@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom';
 import './index.css';
 import Features from './Features';
+import Work from './Work'
+import Pricing from './Pricing';
 function Home() {
 
     return (
@@ -199,6 +201,8 @@ function Home() {
 </section>
             
 <Features/>
+<Work/>
+<Pricing/>
         </>
     );
 }
