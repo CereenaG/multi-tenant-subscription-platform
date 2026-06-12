@@ -1,5 +1,6 @@
 package com.payflow.payflow.entity;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -30,11 +31,12 @@ public class User {
 
     @Column(nullable = false)
     @NotBlank
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
 
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name="role_id")
-//    private Role role;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name="role_id")
+    private Role role;
 
     @Column(name = "created_at",nullable = false)
     private LocalDateTime createdAt;
