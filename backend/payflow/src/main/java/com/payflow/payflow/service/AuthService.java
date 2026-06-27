@@ -1,5 +1,6 @@
 package com.payflow.payflow.service;
 
+import com.payflow.payflow.dto.AuthResponse;
 import com.payflow.payflow.dto.LoginRequest;
 import com.payflow.payflow.dto.RegisterRequest;
 import com.payflow.payflow.dto.UserResponse;
@@ -28,20 +29,20 @@ public class AuthService {
         user.setName(request.getName());
         user.setEmail(request.getEmail());
         user.setPassword(passwordEncoder.encode(request.getPassword()));
-        Role role = roleRepository.findByName("USER").orElseThrow(()->new RuntimeException("Role not round"));
+        Role role = roleRepository.findByName("USER").orElseThrow(()->new RuntimeException("Role not found"));
         user.setRole(role);
         User saved=userrepo.save(user);
         return mapToResponse(saved);
     }
 
-    public UserResponse login(LoginRequest login) {
+    public AuthResponse login(LoginRequest login) {
         User user = userrepo.findByEmail(login.getEmail())
                 .orElseThrow(() -> new InvalidCredentialsException("Invalid Credentials"));
         if (!passwordEncoder.matches(login.getPassword(), user.getPassword())) {
             throw new InvalidCredentialsException("Invalid Credentials");
 
         }
-        return mapToResponse(user);
+        return new AuthResponse("token coming soon");
     }
     private UserResponse mapToResponse(User user){
         return new UserResponse(user.getId(),

@@ -22,18 +22,12 @@ public class User {
     private Long id;
 
     @Column(nullable = false)
-    @NotBlank
     private String name;
 
     @Column(unique = true,nullable = false)
-    @Email
-    @NotBlank
     private String email;
 
     @Column(nullable = false)
-    @NotBlank
-    @Size(min=8)
-  //  @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
 
     @ManyToOne(fetch = FetchType.EAGER)
